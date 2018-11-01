@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>电子价签大屏幕</title>
+	<meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" id="css" href="css/4k-style.css">
+	<script type="text/javascript" src="https://g.alicdn.com/sj/lib/jquery.min.js"></script>
+	<script type="text/javascript">	
+        /*function WidthFun(){
+        	//判断是否宽屏
+            var winWide = $(window).width();
+            var wideScreen = false;
+            
+            if (winWide <= 1280) {//1281及以下分辨率
+                $("#css").attr("href", "css/smallStyle.css");
+                console.log('1280屏幕');
+            }else if(winWide > 1280 && winWide <= 1680){
+            	$("#css").attr("href", "css/smallStyle.css");
+                console.log('中间屏幕');
+            }else {
+                $("#css").attr("href", "css/4k-style.css");
+                console.log('1920大屏');
+                wideScreen = true; //是宽屏
+            }
+        }
+        WidthFun();
+        $(window).resize(function (){ 
+            WidthFun();
+            console.log('变化了');
+            location.reload(); 
+        });*/
+
+		var Week = ['日','一','二','三','四','五','六']; 
+		function setClock(){
+			var now = new Date();
+			var year = now.getFullYear();       //年
+			var month = now.getMonth() + 1;     //月
+			var day = now.getDate();            //日
+			var hh = now.getHours();            //时
+			var mm = now.getMinutes();          //分
+			var ss = now.getSeconds();          //秒
+			var ww = "星期" + Week[now.getDay()];
+			var clock = year + "-";
+			if(month < 10) clock += "0";
+			clock += month + "-";
+			if(day < 10) clock += "0";
+			clock += day + " ";
+			if(hh < 10) clock += "0";
+			clock += hh + ":";
+			if (mm < 10) clock += '0'; 
+			clock += mm + ":"; 
+			if (ss < 10) clock += '0'; 
+			clock += ss + " " + ww; 				
+			$("#myDate").text(clock);		
+		}
+	</script>
+</head>
+<body>
+	<div class="foureKpageBox">
+		<canvas id="liu-canvas" class="liu-canvas" style="position: absolute;">你的浏览器不支持canvas</canvas>
+		<div class="Pagefloor1">
+		 	<div class="Pagefloor1Right">
+		 		<span>河海大厦店</span>
+		 	</div> 
+		 	<div class="Pagefloor1Mid">店内实时数据平台</div> 
+		 	<div class="Pagefloor1Left">
+		 		<span class="timeMid"><i id="myDate"></i></span>
+		 	</div> 
+		</div>
+		<div class="Pagefloor2">
+			<div class="PageListBox">
+				<div class="ListTitle">进店顾客</div>
+				<div class="userImgAll">
+					<!-- <div class="userImgList">
+					 	<div class="userImg"><img src="images/userImg.png"/></div> 
+					 	<div class="userDetail">
+					 	 	<div class="userDetailTime">5分钟前</div>
+					 	 	<div class="userDetailAll">
+					 	 		<div class="DetailList"><span>身份：</span><font class="memberColor">会员</font></div>
+					 	 		<div class="DetailList"><span>性别：</span><font>男</font></div>
+					 	 		<div class="DetailList"><span>年龄：</span><font>约23</font></div>
+					 	 	</div>
+					 	</div>
+					</div> -->
+					<!-- <div class="userImgList">
+					 	<div class="userImg"><img src="images/userImg.png"/></div> 
+					 	<div class="userDetail">
+					 	 	<div class="userDetailTime">3分钟前</div>
+					 	 	<div class="userDetailAll">
+					 	 		<div class="DetailList"><span>身份：</span><font>熟客</font></div>
+					 	 		<div class="DetailList"><span>性别：</span><font>男</font></div>
+					 	 		<div class="DetailList"><span>年龄：</span><font>约23</font></div>
+					 	 	</div>
+					 	</div>
+					</div> -->
+					<!-- <div class="userImgList">
+					 	<div class="userImg"><img src="images/userImg.png"/></div> 
+					 	<div class="userDetail">
+					 	 	<div class="userDetailTime">1分钟前</div>
+					 	 	<div class="userDetailAll">
+					 	 		<div class="DetailList"><span>身份：</span><font>新客</font></div>
+					 	 		<div class="DetailList"><span>性别：</span><font>男</font></div>
+					 	 		<div class="DetailList"><span>年龄：</span><font>约23</font></div>
+					 	 	</div>
+					 	</div>
+					</div> -->
+					<!-- <div class="userImgList">
+					 	<div class="userImg"><img src="images/userImg.png"/></div> 
+					 	<div class="userDetail">
+					 	 	<div class="userDetailTime">10秒前</div>
+					 	 	<div class="userDetailAll">
+					 	 		<div class="DetailList"><span>身份：</span><font class="memberColor">会员</font></div>
+					 	 		<div class="DetailList"><span>性别：</span><font>男</font></div>
+					 	 		<div class="DetailList"><span>年龄：</span><font>约23</font></div>
+					 	 	</div>
+					 	</div>
+					</div> -->
+					<div class="clear"></div>
+				</div>
+			</div> 
+			<div class="PageListBoxToday">
+				<div class="PageTodayTop">
+					<div class="PageTodayTopName">今日进店人数</div>
+					<div class="PageTodayTopCount "><span class="numberRun"></span><font class="font24" style="vertical-align: super;">人</font></div>
+					<div class="clear"></div>
+				</div>
+				<div class="PageTodayCon">
+					<div id="joinShopChart" style="width: 100%;height: 100%;margin: 0 auto"></div>
+				</div>
+			</div>
+			<div class="PageListBox">
+				<div class="ListTitle">分时流量</div>
+				<div class="TimeShareFlow">
+					<div id='todayTakePrice' style='width:100%;height:100%;margin: 0 auto'></div>
+				</div>
+			</div>
+			<div class="PageListBox">
+				<div class="ListTitle">人群分布</div>
+				<div class="peopleStat"><div id="peopleStatroptionChart" style='width:100%;height:100%;margin: 0 auto'></div></div>
+			</div> 
+			<div class="PageListBox">
+				<div class="ListTitle">店内热度</div>
+				<div class="hotShopBox">
+					<div id='HotPriceChart' style='width:100%;height:100%;margin: 0 auto'></div>
+				</div>
+			</div>
+			<div class="PageListBox">
+				<div class="ListTitle">互动游戏与视频</div>
+				<div class="OtherNativeBox">
+					<div id="OtheroptionChart" style='width:100%;height:100%;margin: 0 auto'></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="js/echarts.common.min.js"></script>
+	<script type="text/javascript" src="js/numChange.js"></script>
+	<script type="text/javascript" src="js/MyCharts.js"></script>
+	<script type="text/javascript" src="js/BgChange.js"></script>
+	<script>
+		var basepath = "http://192.168.0.112:8080/hourStatistics";
+		var shopdetail = "http://192.168.0.112:8080/ShopDetail";
+	</script>
+    <script>
+    	$(function(){
+			//大屏进店人数 数据展示
+       	$.ajax({
+                type: 'get',
+				url: basepath + '/selectTodayNumbers',
+                dataType: "json",
+                data: {
+                    'date': "2018-10-30",
+                },
+                success: function (data) {
+					console.log(data)
+                	setInterval(function(){
+				    $(".numberRun").html(data.data);
+				}, 3000);
+                },
+                error: function(data){
+                }
+           });
+
+function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注意时间戳是秒的形式，在这个毫秒的基础上除以1000，就是十位数的时间戳。13位数的都是时间毫秒。
+    var minute = 1000 * 60;      //把分，时，天，周，半个月，一个月用毫秒表示
+    var hour = minute * 60;
+    var day = hour * 24;
+    var week = day * 7;
+    var halfamonth = day * 15;
+	var month = day * 30;
+	var dateTimeStamp = new Date(dateTimeStamps).getTime();
+	
+	console.log(dateTimeStamp)
+	var now = new Date().getTime();   //获取当前时间毫秒
+    console.log(now)
+    var diffValue = now - dateTimeStamp;//时间差
+	// console.log(diffValue)
+    if(diffValue < 0){
+		return;
+    }
+    var minC = diffValue/minute;  //计算时间差的分，时，天，周，月
+    var hourC = diffValue/hour;
+    var dayC = diffValue/day;
+    var weekC = diffValue/week;
+    var monthC = diffValue/month;
+           if(monthC>=1){
+					console.log(parseInt(monthC) + "个月前");
+					return parseInt(monthC) + "个月前";
+				}
+				else if(weekC>=1){
+					console.log(parseInt(weekC) + "周前")
+					return parseInt(weekC) + "周前";
+				}
+				else if(dayC>=1){
+					console.log(parseInt(dayC) +"天前")
+					return parseInt(dayC) +"天前";
+					
+				}
+				else if(hourC>=1){
+					console.log(parseInt(hourC) +"个小时前")
+					return parseInt(hourC) +"个小时前";
+					
+				}
+				else if(minC>=1){
+					console.log(parseInt(minC) +"分钟前")
+					return parseInt(minC) +"分钟前";
+				}else{
+					console.log("刚刚")
+					return "刚刚";
+				}
+}
+// timeago();
+// console.log(a)
+
+        //    饼状图展示
+		   $.ajax({
+                type: 'post',
+                url: shopdetail +  '/findFourShopDeatil',
+                dataType: "json",
+                contentType: "application/json;charset=utf-8",
+				data:JSON.stringify({
+					
+				}),
+                success: function (data) {
+					console.log(data.data.data)
+                var html='';
+				for (var i = 0; i <4; i++) {
+					var dateTimeStamps = data.data.data[i].enterTime;
+					var time=  timeago(dateTimeStamps);
+					var identity=data.data.data[i].identity;
+					var sex = data.data.data[i].sex;
+					var age = data.data.data[i].age;
+					var imgurl = data.data.data[i].picturePath;
+					console.log(identity)
+					if (identity==0) {
+						identity="新客";
+					}else if (identity==1) {
+						identity="熟客";
+					}else if (identity==2) {
+						identity="会员";
+					}
+					if (sex==0) {
+						sex="男";
+					} else {
+						sex="女";
+					}
+					html+=
+					 '<div class="userImgList"><div class="userImg"><img src="'+imgurl+'"/></div>'+
+					 	'<div class="userDetail">'+
+					 	 	'<div class="userDetailTime">'+time+'</div>'+
+					 	 	'<div class="userDetailAll">'+
+					 	 		'<div class="DetailList"><span>身份：</span><font class="memberColor">'+identity+'</font></div>'+
+					 	 		'<div class="DetailList"><span>性别：</span><font>'+sex+'</font></div>'+
+					 	 		'<div class="DetailList"><span>年龄：</span><font>约'+age+'岁</font></div>'+
+							  '</div></div></div>';
+					
+					
+                }
+                 
+                 $('.userImgAll').append(html);
+				},
+                error: function(data){
+                	console.log(1)
+                	
+                }
+           });
+		window.onload = function()
+		{
+		setTimeout("window.location.reload()", 300000);
+		}
+});
+	</script>
+
+</body>
+</html>

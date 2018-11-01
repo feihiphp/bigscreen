@@ -1,0 +1,274 @@
+@font-face {  
+ font-family: MyCustomFont;  
+ src: url("ROBO____.TTF");
+}  
+*{
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+:focus{outline:none;}
+a{
+	text-decoration: none;
+}
+ul,li{
+	list-style: none;
+	font-style: normal;
+}
+.clear{
+	clear: both;
+}
+html,body{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-tap-highlight-color: transparent;
+	font-family: 'Microsoft Yahei';
+	background:url("../images/bigBg.jpg") #061245;
+	background-size: 100%;
+}
+.foureKpageBox{
+	 width:100%;
+	 min-width:1280px;
+	 .Pagefloor1{
+	 	 display:flex;
+	    -webkit-display:flex;
+	       -moz-display:flex;
+	        -ms-display:flex;
+         justify-content:center ;
+ -webkit-justify-content:center ;
+    -moz-justify-content:center ;
+     -ms-justify-content:center ;
+              align-items:center;
+      -webkit-align-items:center;
+         -moz-align-items:center;
+          -ms-align-items:center;
+                 flex-wrap: nowrap;
+         -webkit-flex-wrap: nowrap;
+    -moz-justify-flex-wrap: nowrap;
+     -ms-justify-flex-wrap: nowrap;
+         margin: 0 58px 46px;
+         position: relative;
+             z-index:1;
+	 	.Pagefloor1Left,.Pagefloor1Right{
+	 		width: 418px;
+	 		height: 48px;
+	 		background: url("../images/timeBg.png") no-repeat;
+	 		background-size: 100%;
+	 		line-height: 34px;
+	 		font-size:16px;
+	 		text-align: center;
+	 		span{
+	 			display: inline-block;
+	 		}
+	 	}
+	 	.Pagefloor1Mid{
+	 		width:598px;
+	 		height: 99px;
+	 		background: url("../images/titleBg.png") no-repeat;
+	 		background-size: 100%;
+	 		text-align: center;
+	 		line-height: 106px;
+	 		font-size:36px;
+	 		color: #a3d5f6;
+	 		font-weight: bold;
+	 		margin: 0 auto;
+	 	}
+	 	.Pagefloor1Left{
+	 		.timeLeft{
+	 			color: #d0e9f9;
+	 		}
+	 		.timeMid{
+	 			color: #00ffff;
+	 			i{
+	 				font-style:normal;
+	 				margin: 0 12px;
+	 				display: inline-block;
+	 			}
+	 		}
+	 	}
+	 	.Pagefloor1Right{
+            color: #00ffff;
+	 	}
+	}
+	.Pagefloor2,.Pagefloor3{
+	    	margin: 0 42px 40px;
+			     display:flex;
+	    -webkit-display:flex;
+	       -moz-display:flex;
+	        -ms-display:flex;
+         justify-content:center ;
+ -webkit-justify-content:center ;
+    -moz-justify-content:center ;
+     -ms-justify-content:center ;
+                 flex-wrap: wrap;
+         -webkit-flex-wrap: wrap;
+    -moz-justify-flex-wrap: wrap;
+     -ms-justify-flex-wrap: wrap;
+     position: relative;
+             z-index:1;
+		.PageListBox{
+			width: 566px;
+			height: 415px;
+			background: url("../images/showListBg.png") no-repeat;
+			background-size: 100%;
+		    margin: 0 20px 20px;
+			.userImgAll{
+				width: 520px;
+				height: 345px;
+                margin: 0 auto;
+				.userImgList{
+					background: #062d69;
+					width: 236px;
+					height: 122px;
+					float: left;
+					margin: 16px 12px;
+					display:flex;
+			    -webkit-display:flex;
+			       -moz-display:flex;
+			        -ms-display:flex;
+			         justify-content:flex-start;
+			 -webkit-justify-content:flex-start;
+			    -moz-justify-content:flex-start;
+			     -ms-justify-content:flex-start;
+			             align-items:center;
+			     -webkit-align-items:center;
+			        -moz-align-items:center;
+			         -ms-align-items:center;
+					.userImg{
+						width:82px;
+						height: 102px;
+						// float: left;
+						margin-right: 8px;
+						margin-left: 10px;
+						img{
+							display: block;
+							width:82px;
+						    height: 102px;
+						}
+					}
+					.userDetail{
+						// float: left;
+						.userDetailTime{
+							color: #96cbee;
+							font-size:12px;
+							margin-bottom: 10px;
+						}
+						.userDetailAll{
+							font-size:14px;
+							.DetailList{
+								margin-bottom:6px;
+								span{
+									color: #96cbee;
+									display: inline-block;
+								}
+								font{
+									color: #0798fa;
+                                    display: inline-block;
+								}
+								.memberColor{
+									color: #f77206;
+								}
+							}
+							.DetailList:nth-child(3){
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+			}
+			.TimeShareFlow{
+				width: 100%;
+				height: 345px;
+			}
+			.hotShopBox{
+				width: 100%;
+				height: 345px;
+			}
+			.OtherNativeBox{
+				width: 100%;
+				height: 345px;
+			}
+			.peopleStat{
+				width: 100%;
+				height: 345px;
+			}
+		}
+		.PageTodayCon{
+				width: 100%;
+				height: 345px;
+			}
+		.PageListBoxToday{
+			margin: 0 20px 20px;
+			.PageTodayTop{
+				width: 566px;
+				height: 75px;
+				background: url("../images/comeInShop.png") no-repeat;
+				background-size: 100%;
+				line-height: 75px;
+				.PageTodayTopName{
+					width: 154px;
+					height: 75px;
+					float: left;
+					color: #a3d5f6;
+					font-size: 20px;
+					text-align: center;
+					font-weight: bold;
+				}
+				.PageTodayTopCount{
+					width: 410px;
+					float: left;
+					height: 75px;
+					color: #14fb3f;
+					font-size:50px;
+					text-align: center;
+					font-family: MyCustomFont;
+				}
+			}
+		}
+	}
+	.ListTitle{
+		color: #fff;
+		font-size:20px;
+		font-weight: bold;
+		margin: 16px 18px;
+	}
+
+}
+
+.font24{
+ font-size: 24px;
+ display: inline-block;
+ margin-left: 5px;
+}
+
+
+.mt-number-animate{ 
+    line-height:70px; 
+    height: 70px;
+    font-size:50px;
+    overflow: hidden; 
+    display: inline-block; 
+    position: relative; 
+
+  }
+.mt-number-animate .mt-number-animate-dot{
+  font-family: cursive; 
+  width: 31px;
+  line-height: 68px;
+  float: left; 
+  text-align: center;
+}
+.mt-number-animate .mt-number-animate-dom{ 
+  width: 38px;
+  text-align: center; 
+  float: left; 
+  position: relative; 
+  top: 0;
+}
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span{ 
+  width: 100%; 
+  float: left;
+  font-family: MyCustomFont;
+}

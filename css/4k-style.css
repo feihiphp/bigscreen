@@ -1,0 +1,291 @@
+@font-face {
+  font-family: MyCustomFont;
+  src: url("ROBO____.TTF");
+}
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+:focus {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+  font-style: normal;
+}
+.clear {
+  clear: both;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Microsoft Yahei';
+  background: url("../images/bigBg.jpg") #061245;
+  background-size: 100%;
+}
+.foureKpageBox {
+  width: 100%;
+  min-width: 1920px;
+}
+.foureKpageBox .Pagefloor1 {
+  display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  justify-content: center ;
+  -webkit-justify-content: center ;
+  -moz-justify-content: center ;
+  -ms-justify-content: center ;
+  align-items: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  -moz-justify-flex-wrap: nowrap;
+  -ms-justify-flex-wrap: nowrap;
+  margin: 0 38px 46px;
+  position: relative;
+  z-index: 1;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Left,
+.foureKpageBox .Pagefloor1 .Pagefloor1Right {
+  width: 418px;
+  height: 48px;
+  background: url("../images/timeBg.png") no-repeat;
+  background-size: 100%;
+  line-height: 34px;
+  font-size: 16px;
+  text-align: center;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Left span,
+.foureKpageBox .Pagefloor1 .Pagefloor1Right span {
+  display: inline-block;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Mid {
+  width: 598px;
+  height: 99px;
+  background: url("../images/titleBg.png") no-repeat;
+  background-size: 100%;
+  text-align: center;
+  line-height: 106px;
+  font-size: 36px;
+  color: #a3d5f6;
+  font-weight: bold;
+  margin: 0 auto;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Left .timeLeft {
+  color: #00ffff;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Left .timeMid {
+  color: #00ffff;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Left .timeMid i {
+  font-style: normal;
+  margin: 0 12px;
+  display: inline-block;
+}
+.foureKpageBox .Pagefloor1 .Pagefloor1Right {
+  color: #00ffff;
+}
+.foureKpageBox .Pagefloor2,
+.foureKpageBox .Pagefloor3 {
+  margin: 0 10px 40px;
+  display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  justify-content: center ;
+  -webkit-justify-content: center ;
+  -moz-justify-content: center ;
+  -ms-justify-content: center ;
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -moz-justify-flex-wrap: wrap;
+  -ms-justify-flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.foureKpageBox .Pagefloor2 .PageListBox,
+.foureKpageBox .Pagefloor3 .PageListBox {
+  width: 566px;
+  height: 415px;
+  background: url("../images/showListBg.png") no-repeat;
+  background-size: 100%;
+  margin: 0 20px 20px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll {
+  width: 520px;
+  height: 345px;
+  margin: 0 auto;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList {
+  background: #062d69;
+  width: 236px;
+  height: 122px;
+  float: left;
+  margin: 16px 12px;
+  display: flex;
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  -ms-justify-content: flex-start;
+  align-items: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userImg,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userImg {
+  width: 82px;
+  height: 102px;
+  margin-right: 8px;
+  margin-left: 10px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userImg img,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userImg img {
+  display: block;
+  width: 82px;
+  height: 102px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailTime,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailTime {
+  color: #96cbee;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll {
+  font-size: 14px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList {
+  margin-bottom: 6px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList span,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList span {
+  color: #96cbee;
+  display: inline-block;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList font,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList font {
+  color: #0798fa;
+  display: inline-block;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList .memberColor,
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList .memberColor {
+  color: #f77206;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList:nth-child(3),
+.foureKpageBox .Pagefloor3 .PageListBox .userImgAll .userImgList .userDetail .userDetailAll .DetailList:nth-child(3) {
+  margin-bottom: 0;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .TimeShareFlow,
+.foureKpageBox .Pagefloor3 .PageListBox .TimeShareFlow {
+  width: 100%;
+  height: 345px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .hotShopBox,
+.foureKpageBox .Pagefloor3 .PageListBox .hotShopBox {
+  width: 100%;
+  height: 345px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .OtherNativeBox,
+.foureKpageBox .Pagefloor3 .PageListBox .OtherNativeBox {
+  width: 100%;
+  height: 345px;
+}
+.foureKpageBox .Pagefloor2 .PageListBox .peopleStat,
+.foureKpageBox .Pagefloor3 .PageListBox .peopleStat {
+  width: 100%;
+  height: 345px;
+}
+.foureKpageBox .Pagefloor2 .PageTodayCon,
+.foureKpageBox .Pagefloor3 .PageTodayCon {
+  width: 100%;
+  height: 345px;
+}
+.foureKpageBox .Pagefloor2 .PageListBoxToday,
+.foureKpageBox .Pagefloor3 .PageListBoxToday {
+  margin: 0 20px 20px;
+}
+.foureKpageBox .Pagefloor2 .PageListBoxToday .PageTodayTop,
+.foureKpageBox .Pagefloor3 .PageListBoxToday .PageTodayTop {
+  width: 566px;
+  height: 75px;
+  background: url("../images/comeInShop.png") no-repeat;
+  background-size: 100%;
+  line-height: 75px;
+}
+.foureKpageBox .Pagefloor2 .PageListBoxToday .PageTodayTop .PageTodayTopName,
+.foureKpageBox .Pagefloor3 .PageListBoxToday .PageTodayTop .PageTodayTopName {
+  width: 154px;
+  height: 75px;
+  float: left;
+  color: #a3d5f6;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.foureKpageBox .Pagefloor2 .PageListBoxToday .PageTodayTop .PageTodayTopCount,
+.foureKpageBox .Pagefloor3 .PageListBoxToday .PageTodayTop .PageTodayTopCount {
+  width: 410px;
+  float: left;
+  height: 75px;
+  color: #14fb3f;
+  font-size: 50px;
+  text-align: center;
+  font-family: MyCustomFont;
+}
+.foureKpageBox .ListTitle {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 16px 18px;
+}
+.font24 {
+  font-size: 24px;
+  display: inline-block;
+  margin-left: 5px;
+}
+.mt-number-animate {
+  line-height: 70px;
+  height: 70px;
+  font-size: 50px;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+.mt-number-animate .mt-number-animate-dot {
+  font-family: cursive;
+  width: 31px;
+  line-height: 68px;
+  float: left;
+  text-align: center;
+}
+.mt-number-animate .mt-number-animate-dom {
+  width: 38px;
+  text-align: center;
+  float: left;
+  position: relative;
+  top: 0;
+}
+.mt-number-animate .mt-number-animate-dom .mt-number-animate-span {
+  width: 100%;
+  float: left;
+  font-family: MyCustomFont;
+}
