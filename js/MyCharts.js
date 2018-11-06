@@ -3,7 +3,7 @@ var HotPriceChart = echarts.init(document.getElementById('HotPriceChart'));//初
 var OtheroptionChart = echarts.init(document.getElementById('OtheroptionChart'));//初始化互动游戏与视频
 var peopleStatroptionChart = echarts.init(document.getElementById('peopleStatroptionChart'));//初始化人群分布
 var joinShopChart = echarts.init(document.getElementById('joinShopChart'));//初始化今日进店
-var basepath = "https://192.168.0.200:8080/hourStatistics";
+var basepath = "http://192.168.0.200:8080/hourStatistics";
 Date.prototype.format = function (fmt) { //author: meizz
     var o = {
         "M+": this.getMonth() + 1, //月份

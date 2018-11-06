@@ -160,8 +160,8 @@
 	<script type="text/javascript" src="js/MyCharts.js"></script>
 	<script type="text/javascript" src="js/BgChange.js"></script>
 	<script>
-		var basepath = "https://192.168.0.200:8080/hourStatistics";
-		var shopdetail = "https://192.168.0.200:8080/ShopDetail";
+		var basepath = "http://192.168.0.200:8080/hourStatistics";
+		var shopdetail = "http://192.168.0.200:8080/ShopDetail";
 	</script>
     <script>
 		// 获取指定的URL参数值 
@@ -313,7 +313,7 @@ function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注�
         //    饼状图展示
 		   $.ajax({
                 type: 'get',
-				url: 'https://192.168.0.109:8080/ShopDetail/findFourShopDeatil',
+				url: 'http://192.168.0.109:8080/ShopDetail/findFourShopDeatil',
                 dataType:'JSONP',
                 // contentType: "application/json;charset=utf-8",
 				data:{
