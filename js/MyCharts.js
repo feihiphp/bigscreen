@@ -165,47 +165,47 @@ optionLine = {
     ]
 };
 //人群充值
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectTimeSharingTrafficNumbers',
-    dataType:'JSONP',
-    // contentType: "application/json;charset=utf-8",
-    data:{
-        storeId: st,
-        clientId: cl,
-        'datetime': new Date(),
-    },
-    success: function (data) { 
-        console.log(data.data)
-        if (data.code) {
-            return ;
-        }
-        for(var i=0;i<data.data.length;i++){   
-            var count=data.data[i].count;   
-            if (count==null || count==0) {
-                count=0;
-            } 
-            optionLine.series[0].data.push(count);    //依次取出人群个数
-        }
-        //循环显示x坐标
-        for(var i=0;i<data.data.length;i++){
-                if (i>=10) {
-                    var ii =String(i+":00");
-                    // console.log(ii)
-                    optionLine.xAxis.data.push(ii);
-                }
-                if(i<10){
-                    var ii =String( "0" + i+":00");
-                    optionLine.xAxis.data.push(ii);
-                //   console.log(ii)
-                }
-            }
-            // console.log(optionLine.xAxis.data)
-            todayTakePriceChart.setOption(optionLine);
-    },
-    error: function(data){
-    }
-});
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectTimeSharingTrafficNumbers',
+//     dataType:'JSONP',
+//     // contentType: "application/json;charset=utf-8",
+//     data:{
+//         storeId: st,
+//         clientId: cl,
+//         'datetime': new Date(),
+//     },
+//     success: function (data) { 
+//         console.log(data.data)
+//         if (data.code) {
+//             return ;
+//         }
+//         for(var i=0;i<data.data.length;i++){   
+//             var count=data.data[i].count;   
+//             if (count==null || count==0) {
+//                 count=0;
+//             } 
+//             optionLine.series[0].data.push(count);    //依次取出人群个数
+//         }
+//         //循环显示x坐标
+//         for(var i=0;i<data.data.length;i++){
+//                 if (i>=10) {
+//                     var ii =String(i+":00");
+//                     // console.log(ii)
+//                     optionLine.xAxis.data.push(ii);
+//                 }
+//                 if(i<10){
+//                     var ii =String( "0" + i+":00");
+//                     optionLine.xAxis.data.push(ii);
+//                 //   console.log(ii)
+//                 }
+//             }
+//             // console.log(optionLine.xAxis.data)
+//             todayTakePriceChart.setOption(optionLine);
+//     },
+//     error: function(data){
+//     }
+// });
 
 // 店内热区开始
 var data=[{value:335, name:'饮料区',itemStyle: {color: '#049b93'}},
