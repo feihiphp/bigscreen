@@ -101,7 +101,7 @@ optionLine = {
     xAxis:  {
         type: 'category',
         boundaryGap: false,
-        data: ["00:00","01:00","02:00","03:00","04:00","05:00"],
+        data: ['00:00','01:00','02:00','03:00','04:00',],
         splitLine:{show: false},
         axisLine: {
             show: true,
@@ -135,7 +135,7 @@ optionLine = {
         {
             name:'分时人数',
             type:'line',
-            data:[12,17,53,24,52,14],
+            data:[100, 60, 90, 120, 60],
             markPoint: {
                 data: [
                     {type: 'max', name: '最大值'},
