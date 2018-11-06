@@ -3,7 +3,7 @@ var HotPriceChart = echarts.init(document.getElementById('HotPriceChart'));//初
 var OtheroptionChart = echarts.init(document.getElementById('OtheroptionChart'));//初始化互动游戏与视频
 var peopleStatroptionChart = echarts.init(document.getElementById('peopleStatroptionChart'));//初始化人群分布
 var joinShopChart = echarts.init(document.getElementById('joinShopChart'));//初始化今日进店
-var basepath = "http://192.168.0.200:8080/hourStatistics";
+// var basepath = "http://192.168.0.200:8080/hourStatistics";
 Date.prototype.format = function (fmt) { //author: meizz
     var o = {
         "M+": this.getMonth() + 1, //月份
@@ -20,60 +20,60 @@ Date.prototype.format = function (fmt) { //author: meizz
     return fmt;
 }
 // 获取指定的URL参数值 
-var cl;
-var st;
-function showWindowHref(sHref) {
-    var args = sHref.split('?');
-    if(args[0]== sHref){
-        return "";
-    }
-    var arr = args[1].split('&');
-    var obj = {};
-    for (var i = 0; i < arr.length; i++) {
-        var arg = arr[i].split('=');
-        // console.log(arg)
-        obj[arg[0]] = arg[1];                
-    }
-    return obj;
-}
+// var cl;
+// var st;
+// function showWindowHref(sHref) {
+//     var args = sHref.split('?');
+//     if(args[0]== sHref){
+//         return "";
+//     }
+//     var arr = args[1].split('&');
+//     var obj = {};
+//     for (var i = 0; i < arr.length; i++) {
+//         var arg = arr[i].split('=');
+//         // console.log(arg)
+//         obj[arg[0]] = arg[1];                
+//     }
+//     return obj;
+// }
 
-// var strUrl="http://www.book.com/jquery/bookmannger.html?channelid=12333&age=23";   //url例子
-var strUrl=window.location.href;
-var resultobj=showWindowHref(strUrl);
-var list=[];
-for(var key in resultobj){
-    // console.log(key+":"+resultobj[key]);
-    // console.log(key)
-    if (key=="clientId") {
-        cl=resultobj[key];
-    } else if(key=="storeId"){
-        st=resultobj[key];
-    }
-    var parameter = resultobj[key];
-    var Obj = {};
-    if (parameter=='') {
-            alert("无法获取参数")
-    }else{
-        Obj = resultobj[key];
-        list.push(Obj);
-    }
+// // var strUrl="http://www.book.com/jquery/bookmannger.html?channelid=12333&age=23";   //url例子
+// var strUrl=window.location.href;
+// var resultobj=showWindowHref(strUrl);
+// var list=[];
+// for(var key in resultobj){
+//     // console.log(key+":"+resultobj[key]);
+//     // console.log(key)
+//     if (key=="clientId") {
+//         cl=resultobj[key];
+//     } else if(key=="storeId"){
+//         st=resultobj[key];
+//     }
+//     var parameter = resultobj[key];
+//     var Obj = {};
+//     if (parameter=='') {
+//             alert("无法获取参数")
+//     }else{
+//         Obj = resultobj[key];
+//         list.push(Obj);
+//     }
 
-}
-$.ajax({
-    type: 'get',
-    url: '',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-    },
-    success: function (data) {
-        console.log("成功")
-    },
-    error: function(data){
-        console.log("失败")
-    }
-});
+// }
+// $.ajax({
+//     type: 'get',
+//     url: '',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//     },
+//     success: function (data) {
+//         console.log("成功")
+//     },
+//     error: function(data){
+//         console.log("失败")
+//     }
+// });
 // 分时流量
 optionLine = {
     title: {
@@ -101,7 +101,7 @@ optionLine = {
     xAxis:  {
         type: 'category',
         boundaryGap: false,
-        data: [],
+        data: ["00:00","01:00","02:00","03:00","04:00","05:00"],
         splitLine:{show: false},
         axisLine: {
             show: true,
@@ -117,7 +117,7 @@ optionLine = {
     },
     yAxis: {
         type: 'value',
-        data: [],
+        data: [12,5,2,24,52,24],
         splitLine:{show: false},
         axisLine: {
             show: true,
@@ -446,39 +446,39 @@ Peoplestartoption = {
 
 // 人群分布
 
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectPopulationDistributionNumbers',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-        'date': (new Date()).format('yyyy-MM-dd'),
-    },
-    success: function (data) {
-        if (data.code) {
-            return ;
-        }
-        // console.log(data.data[0].youthMale)
-        // console.log(data.data[0].middleMale)
-        // console.log(data.data[0].oldMale)
-        // console.log(data.data[0].youthFemale)
-        // console.log(data.data[0].middleFemale)
-        // console.log(data.data[0].oldFemale)
-        // console.log(Peoplestartoption.series[0].data[0])
-        Peoplestartoption.series[0].data[0]=data.data[0].youthMale;
-        Peoplestartoption.series[0].data[1]=data.data[0].middleMale;
-        Peoplestartoption.series[0].data[2]=data.data[0].oldMale;
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectPopulationDistributionNumbers',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//         'date': (new Date()).format('yyyy-MM-dd'),
+//     },
+//     success: function (data) {
+//         if (data.code) {
+//             return ;
+//         }
+//         // console.log(data.data[0].youthMale)
+//         // console.log(data.data[0].middleMale)
+//         // console.log(data.data[0].oldMale)
+//         // console.log(data.data[0].youthFemale)
+//         // console.log(data.data[0].middleFemale)
+//         // console.log(data.data[0].oldFemale)
+//         // console.log(Peoplestartoption.series[0].data[0])
+//         Peoplestartoption.series[0].data[0]=data.data[0].youthMale;
+//         Peoplestartoption.series[0].data[1]=data.data[0].middleMale;
+//         Peoplestartoption.series[0].data[2]=data.data[0].oldMale;
 
-        Peoplestartoption.series[1].data[0]=data.data[0].youthFemale;
-        Peoplestartoption.series[1].data[1]=data.data[0].middleFemale;
-        Peoplestartoption.series[1].data[2]=data.data[0].oldFemale;
-        peopleStatroptionChart.setOption(Peoplestartoption);
-    },
-    error: function(data){
-        console.log(1)
-    }
-});
+//         Peoplestartoption.series[1].data[0]=data.data[0].youthFemale;
+//         Peoplestartoption.series[1].data[1]=data.data[0].middleFemale;
+//         Peoplestartoption.series[1].data[2]=data.data[0].oldFemale;
+//         peopleStatroptionChart.setOption(Peoplestartoption);
+//     },
+//     error: function(data){
+//         console.log(1)
+//     }
+// });
 
 
 //今日进店人数
@@ -853,90 +853,90 @@ option = {
         }]
     }]
 };
-// 获取女性个数
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectFemaleNumbers',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-        'date': (new Date()).format('yyyy-MM-dd'),
-    },
-    success: function (data) {
-        if (data.code) {
-            return ;
-        }
-              option.series[2].data[0].value=data.data;
-              option.series[3].data[1].value=data.data;
-              joinShopChart.setOption(option);
-    },
-    error: function(data){
-    }
-});
-// 获取男性个数
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectMaleNumbers',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-        'date': (new Date()).format('yyyy-MM-dd'),
-    },
-    success: function (data) {
-        if (data.code) {
-            return ;
-        }
-              option.series[2].data[1].value=data.data;
-              option.series[3].data[0].value=data.data;
-              joinShopChart.setOption(option);
-    },
-    error: function(data){
-    }
-});
-// 获取ios个数
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectIPhoneNumbers',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-        'date': (new Date()).format('yyyy-MM-dd'),
-    },
-    success: function (data) {
-        if (data.code) {
-            return ;
-        }
-              option.series[6].data[0].value=data.data;
-              option.series[7].data[1].value=data.data;
-              joinShopChart.setOption(option);
-    },
-    error: function(data){
-    }
-});
-// 获取androidr使用人数个数
-$.ajax({
-    type: 'get',
-    url: basepath + '/selectAndroidNumbers',
-    dataType:'JSONP',
-    data: {
-        storeId: st,
-        clientId: cl,
-        'date': (new Date()).format('yyyy-MM-dd'),
-    },
-    success: function (data) {
-        if (data.code) {
-            return ;
-        }
-              option.series[6].data[1].value=data.data;
-              option.series[7].data[0].value=data.data;
-              joinShopChart.setOption(option);
-    },
-    error: function(data){
-    }
-});
+// // 获取女性个数
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectFemaleNumbers',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//         'date': (new Date()).format('yyyy-MM-dd'),
+//     },
+//     success: function (data) {
+//         if (data.code) {
+//             return ;
+//         }
+//               option.series[2].data[0].value=data.data;
+//               option.series[3].data[1].value=data.data;
+//               joinShopChart.setOption(option);
+//     },
+//     error: function(data){
+//     }
+// });
+// // 获取男性个数
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectMaleNumbers',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//         'date': (new Date()).format('yyyy-MM-dd'),
+//     },
+//     success: function (data) {
+//         if (data.code) {
+//             return ;
+//         }
+//               option.series[2].data[1].value=data.data;
+//               option.series[3].data[0].value=data.data;
+//               joinShopChart.setOption(option);
+//     },
+//     error: function(data){
+//     }
+// });
+// // 获取ios个数
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectIPhoneNumbers',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//         'date': (new Date()).format('yyyy-MM-dd'),
+//     },
+//     success: function (data) {
+//         if (data.code) {
+//             return ;
+//         }
+//               option.series[6].data[0].value=data.data;
+//               option.series[7].data[1].value=data.data;
+//               joinShopChart.setOption(option);
+//     },
+//     error: function(data){
+//     }
+// });
+// // 获取androidr使用人数个数
+// $.ajax({
+//     type: 'get',
+//     url: basepath + '/selectAndroidNumbers',
+//     dataType:'JSONP',
+//     data: {
+//         storeId: st,
+//         clientId: cl,
+//         'date': (new Date()).format('yyyy-MM-dd'),
+//     },
+//     success: function (data) {
+//         if (data.code) {
+//             return ;
+//         }
+//               option.series[6].data[1].value=data.data;
+//               option.series[7].data[0].value=data.data;
+//               joinShopChart.setOption(option);
+//     },
+//     error: function(data){
+//     }
+// });
 joinShopChart.setOption(option);
 todayTakePriceChart.setOption(optionLine);
 HotPriceChart.setOption(optionHotPlace);
