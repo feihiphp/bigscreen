@@ -3,7 +3,77 @@ var HotPriceChart = echarts.init(document.getElementById('HotPriceChart'));//初
 var OtheroptionChart = echarts.init(document.getElementById('OtheroptionChart'));//初始化互动游戏与视频
 var peopleStatroptionChart = echarts.init(document.getElementById('peopleStatroptionChart'));//初始化人群分布
 var joinShopChart = echarts.init(document.getElementById('joinShopChart'));//初始化今日进店
-var basepath = "http://192.168.0.112:8080/hourStatistics";
+var basepath = "http://192.168.0.200:8080/hourStatistics";
+Date.prototype.format = function (fmt) { //author: meizz
+    var o = {
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+// 获取指定的URL参数值 
+var cl;
+var st;
+function showWindowHref(sHref) {
+    var args = sHref.split('?');
+    if(args[0]== sHref){
+        return "";
+    }
+    var arr = args[1].split('&');
+    var obj = {};
+    for (var i = 0; i < arr.length; i++) {
+        var arg = arr[i].split('=');
+        // console.log(arg)
+        obj[arg[0]] = arg[1];                
+    }
+    return obj;
+}
+
+// var strUrl="http://www.book.com/jquery/bookmannger.html?channelid=12333&age=23";   //url例子
+var strUrl=window.location.href;
+var resultobj=showWindowHref(strUrl);
+var list=[];
+for(var key in resultobj){
+    // console.log(key+":"+resultobj[key]);
+    // console.log(key)
+    if (key=="clientId") {
+        cl=resultobj[key];
+    } else if(key=="storeId"){
+        st=resultobj[key];
+    }
+    var parameter = resultobj[key];
+    var Obj = {};
+    if (parameter=='') {
+            alert("无法获取参数")
+    }else{
+        Obj = resultobj[key];
+        list.push(Obj);
+    }
+
+}
+$.ajax({
+    type: 'get',
+    url: '',
+    dataType: "json",
+    data: {
+        storeId: st,
+        clientId: cl,
+    },
+    success: function (data) {
+        console.log("成功")
+    },
+    error: function(data){
+        console.log("失败")
+    }
+});
 // 分时流量
 optionLine = {
     title: {
@@ -96,16 +166,26 @@ optionLine = {
 };
 //人群充值
 $.ajax({
-    type: 'post',
+    type: 'get',
     url: basepath + '/selectTimeSharingTrafficNumbers',
     dataType: "json",
-    contentType: "application/json;charset=utf-8",
-    data:JSON.stringify({
-        'datetime': "2018-10-30 23:00:00",
-    }),
+    // contentType: "application/json;charset=utf-8",
+    data:{
+        storeId: st,
+        clientId: cl,
+        'datetime': new Date(),
+    },
     success: function (data) { 
-        for(var i=0;i<data.data.length;i++){       
-            optionLine.series[0].data.push(data.data[i].count);    //依次取出人群个数
+        console.log(data.data)
+        if (data.code) {
+            return ;
+        }
+        for(var i=0;i<data.data.length;i++){   
+            var count=data.data[i].count;   
+            if (count==null || count==0) {
+                count=0;
+            } 
+            optionLine.series[0].data.push(count);    //依次取出人群个数
         }
         //循环显示x坐标
         for(var i=0;i<data.data.length;i++){
@@ -371,9 +451,14 @@ $.ajax({
     url: basepath + '/selectPopulationDistributionNumbers',
     dataType: "json",
     data: {
-        'date': "2018-10-30",
+        storeId: st,
+        clientId: cl,
+        'date': (new Date()).format('yyyy-MM-dd'),
     },
     success: function (data) {
+        if (data.code) {
+            return ;
+        }
         // console.log(data.data[0].youthMale)
         // console.log(data.data[0].middleMale)
         // console.log(data.data[0].oldMale)
@@ -504,7 +589,7 @@ option = {
             }
         },
         data: [{
-            value: data[0].value,
+            value: 10,
             name: '女性用户',
             
             label: {
@@ -521,7 +606,7 @@ option = {
                  formatter: "{a} <br/>计算公式:占比率=({b}/注销总数)*100%<br/> 申请注销数 : {c}"
             }
         }, {
-            value: 82,
+            value: 10,
             name: '其他类型数',
             label: {
                 normal: {
@@ -553,7 +638,7 @@ option = {
             }
         },
         data: [{
-            value: 18,
+            value: 10,
             name: '男性用户',
             
             label: {
@@ -566,7 +651,7 @@ option = {
                 }
             },
         }, {
-            value: 86,
+            value: 10,
             name: '其他类型数',
             label: {
                 normal: {
@@ -774,9 +859,14 @@ $.ajax({
     url: basepath + '/selectFemaleNumbers',
     dataType: "json",
     data: {
-        'date': "2018-10-30",
+        storeId: st,
+        clientId: cl,
+        'date': (new Date()).format('yyyy-MM-dd'),
     },
     success: function (data) {
+        if (data.code) {
+            return ;
+        }
               option.series[2].data[0].value=data.data;
               option.series[3].data[1].value=data.data;
               joinShopChart.setOption(option);
@@ -790,9 +880,14 @@ $.ajax({
     url: basepath + '/selectMaleNumbers',
     dataType: "json",
     data: {
-        'date': "2018-10-30",
+        storeId: st,
+        clientId: cl,
+        'date': (new Date()).format('yyyy-MM-dd'),
     },
     success: function (data) {
+        if (data.code) {
+            return ;
+        }
               option.series[2].data[1].value=data.data;
               option.series[3].data[0].value=data.data;
               joinShopChart.setOption(option);
@@ -803,12 +898,17 @@ $.ajax({
 // 获取ios个数
 $.ajax({
     type: 'get',
-    url: basepath + '/selectiPhoneNumbers',
+    url: basepath + '/selectIPhoneNumbers',
     dataType: "json",
     data: {
-        'date': "2018-10-30",
+        storeId: st,
+        clientId: cl,
+        'date': (new Date()).format('yyyy-MM-dd'),
     },
     success: function (data) {
+        if (data.code) {
+            return ;
+        }
               option.series[6].data[0].value=data.data;
               option.series[7].data[1].value=data.data;
               joinShopChart.setOption(option);
@@ -822,9 +922,14 @@ $.ajax({
     url: basepath + '/selectAndroidNumbers',
     dataType: "json",
     data: {
-        'date': "2018-10-30",
+        storeId: st,
+        clientId: cl,
+        'date': (new Date()).format('yyyy-MM-dd'),
     },
     success: function (data) {
+        if (data.code) {
+            return ;
+        }
               option.series[6].data[1].value=data.data;
               option.series[7].data[0].value=data.data;
               joinShopChart.setOption(option);

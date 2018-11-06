@@ -66,12 +66,14 @@ body {
   line-height: 34px;
   font-size: 16px;
   text-align: center;
+  margin-right: 5%;
 }
 .foureKpageBox .Pagefloor1 .Pagefloor1Left span,
 .foureKpageBox .Pagefloor1 .Pagefloor1Right span {
   display: inline-block;
 }
-.foureKpageBox .Pagefloor1 .Pagefloor1Mid {
+/* .foureKpageBox .Pagefloor1  */
+.Pagefloor1Mid {
   width: 598px;
   height: 99px;
   background: url("../images/titleBg.png") no-repeat;
@@ -82,6 +84,7 @@ body {
   color: #a3d5f6;
   font-weight: bold;
   margin: 0 auto;
+  margin-left: 4%;
 }
 .foureKpageBox .Pagefloor1 .Pagefloor1Left .timeLeft {
   color: #00ffff;
@@ -96,10 +99,12 @@ body {
 }
 .foureKpageBox .Pagefloor1 .Pagefloor1Right {
   color: #00ffff;
+  margin-left: -22px;
 }
 .foureKpageBox .Pagefloor2,
 .foureKpageBox .Pagefloor3 {
   margin: 0 10px 40px;
+  margin-left: -100px;
   display: flex;
   -webkit-display: flex;
   -moz-display: flex;

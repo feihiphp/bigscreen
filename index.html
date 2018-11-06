@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>电子价签大屏幕</title>
+	<meta name="referrer" content="no-referrer" />
 	<meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 	<link rel="stylesheet" id="css" href="css/4k-style.css">
 	<script type="text/javascript" src="https://g.alicdn.com/sj/lib/jquery.min.js"></script>
@@ -159,10 +160,92 @@
 	<script type="text/javascript" src="js/MyCharts.js"></script>
 	<script type="text/javascript" src="js/BgChange.js"></script>
 	<script>
-		var basepath = "http://192.168.0.112:8080/hourStatistics";
-		var shopdetail = "http://192.168.0.112:8080/ShopDetail";
+		var basepath = "http://192.168.0.200:8080/hourStatistics";
+		var shopdetail = "http://192.168.0.200:8080/ShopDetail";
 	</script>
     <script>
+		// 获取指定的URL参数值 
+			var cl;
+			var st;
+			function showWindowHref(sHref) {
+				var args = sHref.split('?');
+				if(args[0]== sHref){
+					return "";
+				}
+				var arr = args[1].split('&');
+				var obj = {};
+				for (var i = 0; i < arr.length; i++) {
+					var arg = arr[i].split('=');
+					obj[arg[0]] = arg[1];                
+				}
+				return obj;
+			}
+			// var strUrl="http://www.book.com/jquery/bookmannger.html?channelid=12333&age=23";   //url例子
+			var strUrl=window.location.href;
+			var resultobj=showWindowHref(strUrl);
+			var list=[];
+			for(var key in resultobj){
+				// console.log(key+":"+resultobj[key]);
+				if (key=="clientId") {
+					cl=resultobj[key];
+				} else if(key=="storeId"){
+					st=resultobj[key];
+				}
+				var parameter = resultobj[key];
+				var Obj = {};
+				if (parameter=='') {
+						alert("无法获取参数")
+				}else{
+					Obj = resultobj[key];
+					list.push(Obj);
+				}
+				var parameter = resultobj[key];
+				var Obj = {};
+				if (parameter=='') {
+						alert("无法获取参数")
+				}else{
+					Obj.id = resultobj[key];
+                    list.push(Obj);
+				}
+
+			}
+			
+			$.ajax({
+                type: 'get',
+				url: '',
+                dataType: "json",
+                data: {
+					storeId: st,
+                    clientId: cl,
+                },
+                success: function (data) {
+					console.log("成功")
+                },
+                error: function(data){
+					console.log("失败")
+                }
+           });
+		// 时间转换
+		Date.prototype.format = function (fmt) { 
+         var o = {
+				"M+": this.getMonth() + 1, //月份
+				"d+": this.getDate(), //日
+				"h+": this.getHours(), //小时
+				"m+": this.getMinutes(), //分
+				"s+": this.getSeconds(), //秒
+				"q+": Math.floor((this.getMonth() + 3) / 3), //季度
+				"S": this.getMilliseconds() //毫秒
+			};
+			if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			for (var k in o)
+			if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			return fmt;
+		}
+		// 转换时间
+		setInterval(function () {
+            $("#myDate").html((new Date()).format('yyyy-MM-dd hh:mm:ss'));
+        }, 1000);
+
     	$(function(){
 			//大屏进店人数 数据展示
        	$.ajax({
@@ -170,17 +253,22 @@
 				url: basepath + '/selectTodayNumbers',
                 dataType: "json",
                 data: {
-                    'date': "2018-10-30",
+					storeId: st,
+                    clientId: cl,
+                    'date': (new Date()).format('yyyy-MM-dd'),
                 },
                 success: function (data) {
-					console.log(data)
+					if (data.code) {
+						return ;
+					}
                 	setInterval(function(){
 				    $(".numberRun").html(data.data);
 				}, 3000);
                 },
                 error: function(data){
                 }
-           });
+		   });
+	   
 
 function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注意时间戳是秒的形式，在这个毫秒的基础上除以1000，就是十位数的时间戳。13位数的都是时间毫秒。
     var minute = 1000 * 60;      //把分，时，天，周，半个月，一个月用毫秒表示
@@ -191,13 +279,10 @@ function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注�
 	var month = day * 30;
 	var dateTimeStamp = new Date(dateTimeStamps).getTime();
 	
-	console.log(dateTimeStamp)
 	var now = new Date().getTime();   //获取当前时间毫秒
-    console.log(now)
     var diffValue = now - dateTimeStamp;//时间差
-	// console.log(diffValue)
     if(diffValue < 0){
-		return;
+		var diffValue = now-now;//时间差
     }
     var minC = diffValue/minute;  //计算时间差的分，时，天，周，月
     var hourC = diffValue/hour;
@@ -205,54 +290,51 @@ function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注�
     var weekC = diffValue/week;
     var monthC = diffValue/month;
            if(monthC>=1){
-					console.log(parseInt(monthC) + "个月前");
 					return parseInt(monthC) + "个月前";
 				}
 				else if(weekC>=1){
-					console.log(parseInt(weekC) + "周前")
 					return parseInt(weekC) + "周前";
 				}
 				else if(dayC>=1){
-					console.log(parseInt(dayC) +"天前")
 					return parseInt(dayC) +"天前";
 					
 				}
 				else if(hourC>=1){
-					console.log(parseInt(hourC) +"个小时前")
 					return parseInt(hourC) +"个小时前";
 					
 				}
 				else if(minC>=1){
-					console.log(parseInt(minC) +"分钟前")
 					return parseInt(minC) +"分钟前";
 				}else{
-					console.log("刚刚")
 					return "刚刚";
 				}
 }
-// timeago();
-// console.log(a)
 
         //    饼状图展示
 		   $.ajax({
-                type: 'post',
-                url: shopdetail +  '/findFourShopDeatil',
+                type: 'get',
+				url: 'http://192.168.0.109:8080/ShopDetail/findFourShopDeatil',
                 dataType: "json",
-                contentType: "application/json;charset=utf-8",
-				data:JSON.stringify({
+                // contentType: "application/json;charset=utf-8",
+				data:{
+					storeId: st,
+					clientId: cl,
 					
-				}),
+				},
                 success: function (data) {
-					console.log(data.data.data)
+					console.log(data)
+					if (data.code) {
+						return ;
+						
+					}
                 var html='';
-				for (var i = 0; i <4; i++) {
+				for (var i = 0; i <data.data.data.length; i++) {
 					var dateTimeStamps = data.data.data[i].enterTime;
 					var time=  timeago(dateTimeStamps);
 					var identity=data.data.data[i].identity;
 					var sex = data.data.data[i].sex;
 					var age = data.data.data[i].age;
 					var imgurl = data.data.data[i].picturePath;
-					console.log(identity)
 					if (identity==0) {
 						identity="新客";
 					}else if (identity==1) {
@@ -281,7 +363,6 @@ function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注�
                  $('.userImgAll').append(html);
 				},
                 error: function(data){
-                	console.log(1)
                 	
                 }
            });
