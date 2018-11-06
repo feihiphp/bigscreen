@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>电子价签大屏幕</title>
-	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 	<meta name="referrer" content="no-referrer" />
 	<meta name="viewport" content="height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
 	<link rel="stylesheet" id="css" href="css/4k-style.css">
@@ -214,7 +213,7 @@
 			$.ajax({
                 type: 'get',
 				url: '',
-                dataType: "json",
+				dataType:'JSONP',				
                 data: {
 					storeId: st,
                     clientId: cl,
@@ -252,7 +251,7 @@
        	$.ajax({
                 type: 'get',
 				url: basepath + '/selectTodayNumbers',
-                dataType: "json",
+                dataType:'JSONP',
                 data: {
 					storeId: st,
                     clientId: cl,
@@ -315,7 +314,7 @@ function timeago(dateTimeStamps){   //dateTimeStamp是一个时间毫秒，注�
 		   $.ajax({
                 type: 'get',
 				url: 'https://192.168.0.109:8080/ShopDetail/findFourShopDeatil',
-                dataType: "json",
+                dataType:'JSONP',
                 // contentType: "application/json;charset=utf-8",
 				data:{
 					storeId: st,

@@ -62,7 +62,7 @@ for(var key in resultobj){
 $.ajax({
     type: 'get',
     url: '',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
@@ -168,7 +168,7 @@ optionLine = {
 $.ajax({
     type: 'get',
     url: basepath + '/selectTimeSharingTrafficNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     // contentType: "application/json;charset=utf-8",
     data:{
         storeId: st,
@@ -449,7 +449,7 @@ Peoplestartoption = {
 $.ajax({
     type: 'get',
     url: basepath + '/selectPopulationDistributionNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
@@ -857,7 +857,7 @@ option = {
 $.ajax({
     type: 'get',
     url: basepath + '/selectFemaleNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
@@ -878,7 +878,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: basepath + '/selectMaleNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
@@ -899,7 +899,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: basepath + '/selectIPhoneNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
@@ -920,7 +920,7 @@ $.ajax({
 $.ajax({
     type: 'get',
     url: basepath + '/selectAndroidNumbers',
-    dataType: "json",
+    dataType:'JSONP',
     data: {
         storeId: st,
         clientId: cl,
