@@ -117,7 +117,7 @@ optionLine = {
     },
     yAxis: {
         type: 'value',
-        data: ["12","5","2","24","52","24"],
+        data: [],
         splitLine:{show: false},
         axisLine: {
             show: true,
@@ -135,7 +135,7 @@ optionLine = {
         {
             name:'分时人数',
             type:'line',
-            data:[],
+            data:[12,17,53,24,52,14],
             markPoint: {
                 data: [
                     {type: 'max', name: '最大值'},
