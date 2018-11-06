@@ -117,7 +117,7 @@ optionLine = {
     },
     yAxis: {
         type: 'value',
-        data: [12,5,2,24,52,24],
+        data: ["12","5","2","24","52","24"],
         splitLine:{show: false},
         axisLine: {
             show: true,
